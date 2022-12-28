@@ -13,7 +13,7 @@ from sklearn.metrics import mean_squared_error
 #Set up Page
 st.set_page_config(
   page_title = "Applications of Regression", 
-  page_icon = "",
+  page_icon = "📊",
   layout = "wide",
   initial_sidebar_state = "expanded" 
   )
