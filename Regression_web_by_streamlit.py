@@ -34,7 +34,7 @@ with col_2:
   checkbox = st.radio('', checkbox_names)
   #Choose test size
   st.header("Text test size")
-  test_size = st.number_input("Text test size")
+  test_size = st.number_input("")
   if uploaded_file is not None:
     #Select feature
     st.header("Choose features: ")
