@@ -1,5 +1,4 @@
 import streamlit as st
- 
 import pandas as pd
 import csv
 import math
@@ -16,7 +15,7 @@ st.set_page_config(
   page_title = "Applications of Regression", 
   page_icon = "",
   layout = "wide",
-  initial_sidebar_state="expanded" 
+  initial_sidebar_state = "expanded" 
   )
 #Design Page
 st.title("Regression with Dataframe")
@@ -45,32 +44,32 @@ with col_2:
     data_set = df
     #Extracting Independent and dependent Variable
     if options != []:
-      x= data_set.loc[ : , options].values  
-      y= data_set.iloc[ : , -1].values
+      x = data_set.loc[ : , options].values  
+      y = data_set.iloc[ : , -1].values
       #Catgorical data  
-      labelencoder_x= LabelEncoder()
+      labelencoder_x = LabelEncoder()
       index_key = -1
       for key in options:
           index_key = index_key + 1
           if df.dtypes[key] == 'object':
-            x[ : , index_key]= labelencoder_x.fit_transform(x[ : , index_key])
+            x[ : , index_key] = labelencoder_x.fit_transform(x[ : , index_key])
       #Splitting the dataset into training and test set.
       if test_size > 0 and test_size <= 1:
         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = test_size, random_state = 0)
         #Run choosen Regression Model:
         if checkbox == "Linear Regression":
           #Fitting the MLR model to the training set:  
-          regressor= LinearRegression()  
+          regressor = LinearRegression()  
         elif checkbox == "XGBoost":
           # Train model bằng XGB
-          regressor = xgb.XGBRegressor(random_state=42, n_estimators = 100)
+          regressor = xgb.XGBRegressor(random_state = 42, n_estimators = 100)
         elif checkbox == "Decision Tree":
           #Fitting the Decision Tree model to the training set:
-          regressor = DecisionTreeRegressor(min_samples_leaf = 4, min_samples_split = 4, random_state=0)
+          regressor = DecisionTreeRegressor(min_samples_leaf = 4, min_samples_split = 4, random_state = 0)
         #Fitting model and data
         regressor.fit(x_train, y_train)
         #Predicting the Test set result;  
-        y_pred= regressor.predict(x_test) 
+        y_pred = regressor.predict(x_test) 
         y_pred_train = regressor.predict(x_train)
         #Show detail and bar chart
         keys = ["MAE(train)", "MAE(test)", "MSE(train)", "MSE(test)"]
