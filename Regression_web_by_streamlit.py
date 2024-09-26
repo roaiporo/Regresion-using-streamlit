@@ -47,7 +47,7 @@ with col_2:
       x = data_set.loc[ : , options].values  
       y = data_set.iloc[ : , -1].values
       #Catgorical data  
-      labelencoder_x= LabelEncoder()
+      labelencoder_x = LabelEncoder()
       index_key = -1
       for key in options:
           index_key = index_key + 1
@@ -62,10 +62,10 @@ with col_2:
           regressor = LinearRegression()  
         elif checkbox == "XGBoost":
           # Train model bằng XGB
-          regressor = xgb.XGBRegressor(random_state=42, n_estimators = 100)
+          regressor = xgb.XGBRegressor(random_state = 42, n_estimators = 100)
         elif checkbox == "Decision Tree":
           #Fitting the Decision Tree model to the training set:
-          regressor = DecisionTreeRegressor(min_samples_leaf = 4, min_samples_split = 4, random_state=0)
+          regressor = DecisionTreeRegressor(min_samples_leaf = 4, min_samples_split = 4, random_state = 0)
         #Fitting model and data
         regressor.fit(x_train, y_train)
         #Predicting the Test set result;  
